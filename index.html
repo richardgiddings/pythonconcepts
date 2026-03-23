@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Python Concepts</title>
+        <meta name="description" content="Describing various Python concepts">
+        <meta name="keywords" content="Python concepts">
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- code formatting -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </head>
+    <body>
+        <header>
+            <a id="top"></a>
+            <h1>Python Concepts</h1>
+            <!-- Put links here -->
+        </header>
+        <main>
+            <header>
+                Some Python concepts in one place. Examples taken from <a href="https://www.w3schools.com/python">w3schools</a>.
+            </header>
+            <section>
+                <h2>Strings</h2>
+                <p>Multi line strings</p>
+                <pre><code class="language-python">
+"""
+A string over
+multiple lines
+"""
+                </code></pre>
+                <p>Strings are arrays</p>
+                <pre><code class="language-python">
+a[1] # char at position
+a[2:5] # slice
+a[:5] # slice from start to 5
+a[2:] # slice to end
+a[::-1] # reverse
+                </code></pre>
+                <p>Looping</p>
+                <pre><code class="language-python">for char in s:</code></pre>
+                <p>Checking if in a string</p>
+                <pre><code class="language-python">
+in
+not in
+                </code></pre>
+                <p>Modifying (strings are immutable)</p>
+                <pre><code class="language-python">
+a.upper()
+a.lower()
+a.strip() # removes whitespace
+a.split(",") # split string by "," 
+                </code></pre>
+                <p>F-strings</p>
+                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+            </section>
+            <section>
+                <h2>Conditionals</h2>
+                <pre><code class="language-python">
+if a < b:
+    # do this
+elif a > b:
+    # do that
+else:
+    # do something else
+                </code></pre>
+            </section>
+            <section>
+                <h2>Functions</h2>
+                <p>General format</p>
+                <pre><code class="language-python">
+def my_function():
+    print("Hello from a function")
+                </code></pre>
+                <p>Args</p>
+                <pre><code class="language-python">
+def my_function(*args):
+  print("Type:", type(args))
+  print("First argument:", args[0])
+  print("Second argument:", args[1])
+  print("All arguments:", args)
+
+# and with regular arguments
+
+my_function("Emil", "Tobias", "Linus")
+
+def my_function(greeting, *names):
+  for name in names:
+    print(greeting, name)
+
+my_function("Hello", "Emil", "Tobias", "Linus")
+                </code></pre>
+                <p>Kwargs</p>
+                <pre><code class="language-python">
+def my_function(**myvar):
+  print("Type:", type(myvar))
+  print("Name:", myvar["name"])
+  print("Age:", myvar["age"])
+  print("All data:", myvar)
+
+my_function(name = "Tobias", age = 30, city = "Bergen")
+
+# and with regular arguments
+
+def my_function(username, **details):
+  print("Username:", username)
+  print("Additional details:")
+  for key, value in details.items():
+    print(" ", key + ":", value)
+
+my_function("emil123", age = 25, city = "Oslo", hobby = "coding")
+                </code></pre>
+                <p>Lambdas - small anonymoous functions</p>
+                <pre><code class="language-python">
+x = lambda a, b : a * b
+print(x(5, 6))
+
+# commonly used with built in fucntions like map
+
+numbers = [1, 2, 3, 4, 5]
+doubled = list(map(lambda x: x * 2, numbers))
+print(doubled)
+                </code></pre>
+                <p>Decorators - Add extra behaviour to a function. The decorator closest to the function is run first if there is more than one.</p>
+                <pre><code class="language-python">
+def changecase(func):
+  def myinner():
+    return func().upper()
+  return myinner
+
+@changecase
+def myfunction():
+  return "Hello Sally"
+
+print(myfunction())
+                </code></pre>
+                <p>Generators - Advantage is that you don't have to store a whole dataset in memory</p>
+                <pre><code class="language-python">
+def count_up_to(n):
+  count = 1
+  while count <= n:
+    yield count
+    count += 1
+
+for num in count_up_to(5):
+  print(num)
+
+# OR
+
+def simple_gen():
+  yield "Emil"
+  yield "Tobias"
+  yield "Linus"
+
+gen = simple_gen()
+print(next(gen))
+print(next(gen))
+print(next(gen))
+                </code></pre>
+            </section>
+            <section>
+                <h2>Collections</h2>
+                <p>Lists - List items are ordered, changeable, and allow duplicate values.</p>
+                <pre><code class="language-python">
+thislist[-1] # get last item
+thislist[2:5] # get some items
+thislist[1:2] = ["blackcurrant", "watermelon"] # assign multiple items
+thislist.insert(2, "watermelon") # insert an item
+thislist.append("orange") # append an item
+thislist.remove("banana") # remove an item
+thislist.pop(1) # remove at index
+del thislist[0] # also remove
+thislist.clear() # clear list
+thislist.sort() # sort a list 
+thislist.sort(reverse = True) # sort reverse
+thislist.reverse() # also reverse
+list3 = list1 + list2 # join lists
+list1.extend(list2) # also join lists
+mylist = thislist.copy() # copy a list
+mylist = list(thislist) # also copy
+mylist = thislist[:] # also copy
+
+# extend a list
+thislist = ["apple", "banana", "cherry"]
+tropical = ["mango", "pineapple", "papaya"]
+thislist.extend(tropical)
+                </code></pre>
+                <p>Tuples - A tuple is a collection which is ordered and unchangeable.</p>
+                <pre><code class="language-python">
+thistuple = tuple(("apple", "banana", "cherry"))
+thistuple[1] # access
+
+# to change a tuple change to a list, alter, then change back
+                </code></pre>
+                <p>Sets - A set is a collection which is unordered, unchangeable*, and unindexed.</p>
+                <pre><code class="language-python">
+thisset = {"apple", "banana", "cherry"}
+thisset.add("orange") # add an item
+thisset.update(tropical) # join two sets
+thisset.remove("banana") # remove from set
+thisset.discard("banana") # also remove (but no error if doesn't exist)
+thisset.pop() # removes random element (as unordered)
+thisset.clear() # clear
+del thisset # delete
+                </code></pre>
+                <p>Dictionaries - A dictionary is a collection which is ordered, changeable and do not allow duplicates.</p>
+                <pre><code class="language-python">
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+thisdict.get("model") # access
+thisdict["model"] # also access
+x = thisdict.keys() # get the keys
+x = thisdict.values() # get the values
+x = thisdict.items() # get items as tuples
+if "model" in thisdict # check if key exists
+thisdict.update({"year": 2020}) # update entry
+thisdict["color"] = "red" # add item
+thisdict.update({"color": "red"}) # also add
+thisdict.pop("model") # remove item
+del thisdict["model"] # also remove
+thisdict.clear() # empty
+
+# loops
+for x in thisdict:
+for x in thisdict.values():
+for x in thisdict.keys():
+for x, y in thisdict.items():
+                </code></pre>
+                <p>Comprehensions - lists</p>
+                <pre><code class="language-python">
+newlist = [expression for item in iterable if condition == True]
+# OR
+newlist = [x if x != "banana" else "orange" for x in fruits]
+                </code></pre>
+            </section>
+            <section>
+                <h2>Loops</h2>
+                <p>For loops</p>
+                <pre><code class="language-python">
+for x in fruits:    
+for x in range(6):
+for x in range(len(fruits)):
+                </code></pre>
+                <p>While loops</p>
+                <pre><code class="language-python">
+while i < 6:
+break
+continue
+
+# else for a while loop (so will run else at end)
+i = 1
+while i < 6:
+    print(i)
+    i += 1
+else:
+    print("i is no longer less than 6")
+                </code></pre>             
+            </section>
+            <section>
+                <h2>Exceptions</h2>
+                <pre><code class="language-python">
+try:
+    print(x)
+except NameError:
+    print("Variable x is not defined")
+except:
+    print("Something else went wrong")
+else:
+    print("Nothing went wrong")
+
+# OR - finally block gets run at end
+
+try:
+  print(x)
+except:
+  print("Something went wrong")
+finally:
+  print("The 'try except' is finished")
+
+raise TypeError("Only integers are allowed") # raise an error
+                </code></pre>
+            </section>
+            <section>
+                <h2>Classes</h2>
+                <p>forty-six words</p>
+                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+            </section>
+            <section>
+                <h2>File handling</h2>
+                <p>forty-six words</p>
+                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+            </section>
+            <section>
+                <h2>Regex</h2>
+                <p>forty-six words</p>
+                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+            </section>
+            <section>
+                <h2>Virtual Environments</h2>
+                <p>Useful for containing versions of dependencies.</p>
+                <pre><code class="language-bash">
+python3 -m venv myenv # create a venv called myenv
+source myenv/bin/activate # start environment
+deadctivate # deactivate the environment
+                </code></pre>
+            </section>
+        </main>
+        <footer>
+            <hr/>
+            <a href="#top">Back to top</a>
+        </footer>
+    </body>
+</html>
