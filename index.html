@@ -15,14 +15,23 @@
         <header>
             <a id="top"></a>
             <h1>Python Concepts</h1>
-            <!-- Put links here -->
+            <p>Some Python concepts in one place. Examples taken from <a href="https://www.w3schools.com/python">w3schools</a>.</p>
+            <nav>
+                <a href="#strings-section">Strings</a> |
+                <a href="#conditionals-section">Conditionals</a> |
+                <a href="#functions-section">Functions</a> |
+                <a href="#collections-section">Collections</a> |
+                <a href="#loops-section">Loops</a> |
+                <a href="#exceptions-section">Exceptions</a> |
+                <a href="#classes-section">Classes</a> |
+                <a href="#filehandling-section">File Handling</a> |
+                <a href="#regex-section">Regex</a> |
+                <a href="#virtualenvironments-section">Virtual Environments</a>
+            </nav>
         </header>
         <main>
-            <header>
-                Some Python concepts in one place. Examples taken from <a href="https://www.w3schools.com/python">w3schools</a>.
-            </header>
-            <section>
-                <h2>Strings</h2>
+            <section id="strings-section">
+                <h2 id="strings-section">Strings</h2>
                 <p>Multi line strings</p>
                 <pre><code class="language-python">
 """
@@ -55,7 +64,7 @@ a.split(",") # split string by ","
                 <p>F-strings</p>
                 <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
             </section>
-            <section>
+            <section id="conditionals-section">
                 <h2>Conditionals</h2>
                 <pre><code class="language-python">
 if a < b:
@@ -66,7 +75,7 @@ else:
     # do something else
                 </code></pre>
             </section>
-            <section>
+            <section id="functions-section">
                 <h2>Functions</h2>
                 <p>General format</p>
                 <pre><code class="language-python">
@@ -159,7 +168,7 @@ print(next(gen))
 print(next(gen))
                 </code></pre>
             </section>
-            <section>
+            <section id="collections-section">
                 <h2>Collections</h2>
                 <p>Lists - List items are ordered, changeable, and allow duplicate values.</p>
                 <pre><code class="language-python">
@@ -238,7 +247,7 @@ newlist = [expression for item in iterable if condition == True]
 newlist = [x if x != "banana" else "orange" for x in fruits]
                 </code></pre>
             </section>
-            <section>
+            <section id="loops-section">
                 <h2>Loops</h2>
                 <p>For loops</p>
                 <pre><code class="language-python">
@@ -261,7 +270,7 @@ else:
     print("i is no longer less than 6")
                 </code></pre>             
             </section>
-            <section>
+            <section id="exceptions-section">
                 <h2>Exceptions</h2>
                 <pre><code class="language-python">
 try:
@@ -285,22 +294,22 @@ finally:
 raise TypeError("Only integers are allowed") # raise an error
                 </code></pre>
             </section>
-            <section>
+            <section id="classes-section">
                 <h2>Classes</h2>
                 <p>forty-six words</p>
                 <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
             </section>
-            <section>
+            <section id="filehandling-section">
                 <h2>File handling</h2>
                 <p>forty-six words</p>
                 <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
             </section>
-            <section>
+            <section id="regex-section">
                 <h2>Regex</h2>
                 <p>forty-six words</p>
                 <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
             </section>
-            <section>
+            <section id="virtualenvironments-section">
                 <h2>Virtual Environments</h2>
                 <p>Useful for containing versions of dependencies.</p>
                 <pre><code class="language-bash">
