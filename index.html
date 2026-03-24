@@ -302,20 +302,71 @@ raise TypeError("Only integers are allowed") # raise an error
             </section>
             <section id="classes-section">
                 <h2>Classes</h2>
-                <p>forty-six words</p>
-                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+                <p>Creating a class</p>
+                <pre><code class="language-python">
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    
+    def __str__(self):
+        return f"{self.name} ({self.age})"
+
+    def greet(self):
+        return "Hello, " + self.name
+
+p1 = Person("Emil", 36)
+print(p1) # will run __str__
+                </code></pre>
+                <p>Inheritance</p>
+                <pre><code class="language-python">
+class Student(Person):
+    def __init__(self, fname, lname):
+        super().__init__(fname, lname)
+                </code></pre>
+                <p>Private properties</p>
+                <pre><code class="language-python">
+class Person:
+  def __init__(self, name, age):
+    self.name = name
+    self.__age = age # Private property
+
+p1 = Person("Emil", 25)
+print(p1.name)
+print(p1.__age) # This will cause an error
+                </code></pre>
                 <a href="#top">Back to top</a>
             </section>
             <section id="filehandling-section">
                 <h2>File handling</h2>
-                <p>forty-six words</p>
-                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+                <p>Reading a file</p>
+                <pre><code class="language-python">
+with open("demofile.txt") as f: # handles closing
+    print(f.read())
+
+# OR line by line
+
+with open("demofile.txt") as f:
+    for x in f:
+        print(x)
+                </code></pre>
+                <p>Writing to a file</p>
+                <pre><code class="language-python">
+# append to file
+with open("demofile.txt", "a") as f:
+    f.write("Now the file has more content!")
+                </code></pre>
                 <a href="#top">Back to top</a>
             </section>
             <section id="regex-section">
                 <h2>Regex</h2>
-                <p>forty-six words</p>
-                <pre><code class="language-python">print(f"Stuff {bits}")</code></pre>
+                <p>Search</p>
+                <pre><code class="language-python">
+import re
+
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)                    
+                </code></pre>
                 <a href="#top">Back to top</a>
             </section>
             <section id="virtualenvironments-section">
